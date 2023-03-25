@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var monster = {
+            id: 1,
+            nome: 'Monster lata',
+            preco: 10.0,
+        }
+        var coca = {
+            id: 2,
+            nome: 'Coca lata',
+            preco: 5.0,
+        }
+        var redbull = {
+            id: 3,
+            nome: 'Redbull lata',
+            preco: 12.0,
+        }
+        var chamyto = {
+            id: 4,
+            nome: 'Chamyto',
+            preco: 2.50,
+        }
+        var pepsi = {
+            id: 5,
+            nome: 'Pepsi',
+            preco: 5.0,
+        }
+        var produtos = [monster, coca, redbull, chamyto, pepsi]
+        var ctr = 0;
+        var precos = []
+        var subtotal = 0;
+        do {
+            var opc = (window.prompt('Digite 1 para registrar a compra de um produto, 2 para cadastrar um produto novo, 3 para encerrar a compra'))
+            if (opc == '1') {
+                var codigo = parseInt(window.prompt('Digite o código do produto'));
+                var qtd = parseInt(window.prompt('Digite a quantidade do produto'));
+                var precos = Object.values(produtos.find(i => i.id == codigo));
+                var valorsub = (precos[2] * qtd);
+                subtotal += valorsub;
+                console.log(precos[1] + ' x ' + qtd + ' = ' + valorsub + ' reais');
+                console.log('Subtotal = ' + subtotal)
+                document.write('<p>' + precos[1] + ' x ' + qtd + ' = ' + valorsub + ' reais </p>')
+                document.write('Subtotal = R$ ' + subtotal)
+            }
+            else if (opc == '2') {
+                var idcad = 0
+                while (idcad == 0) {
+                    var id = parseInt(prompt('Digite o id do produto'))
+                    if (produtos.includes(produtos.find(i => i.id == id))) {
+                        alert('id já cadastrado')
+                    }
+                    else {
+                        idcad += 1
+                    }
+                }
+                var nomecad = 0
+                while (nomecad = 0) {
+                    var nome = prompt('Digite o nome do produto')
+                    if (produtos.includes(produtos.find(i => i.nome == nome))) {
+                        alert('Nome já cadastrado')
+                    }
+                    else {
+                        nomecad += 1
+                    }
+                }
+                var preco = parseFloat(prompt('Digite o preço do produto'))
+                var produto = {
+                    id: id,
+                    nome: nome,
+                    preco: preco,
+                }
+                produtos.push(produto)
+            }
+            else if (opc == '3') {
+                ctr += 1
+            }
+            else {
+                alert('Opção inválida')
+            }
+        } while (ctr == 0)
+        document.write('<p> O preço final foi de R$ ' + subtotal + '</p>')
+    </script>
+</body>
+
+</html>

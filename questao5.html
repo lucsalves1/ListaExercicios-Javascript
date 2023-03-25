@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>var ctr = 0;
+        var residentes = [];
+        do {
+            var opc = parseInt(window.prompt('Qual ferramenta gostaria de utilizar? - Digite 1 para cadastrar um novo residente \n Digite 2 para calcular a renda média dos residentes \n Digite 3 para calcular a idade média dos residentes \n  Digite 4 para calcular o IMC médio dos residentes\n Digite 5 para sair'))
+            if (opc == 1) {
+                var nome = window.prompt('Digite o nome do residente');
+                var idade = parseInt(window.prompt('Qual a idade do(a) ' + nome + " ?"))
+                var peso = Number(window.prompt('Qual o peso do(a) ' + nome + " ?"));
+                var altura = Number(window.prompt('Qual a altura do(a) ' + nome + " ?"));
+                var renda = Number(window.prompt('Qual a renda do(a) ' + nome + " ?"));
+                var residente = {
+                    nome: nome,
+                    idade: idade,
+                    peso: peso,
+                    altura: altura,
+                    renda: renda,
+                }
+                residentes.push(residente);
+            }
+            else if (opc == 2) {
+                var rentotal = 0;
+                var qtdresi = parseInt(residentes.length);
+                for (i = 0; i < qtdresi; i++) {
+                    var index = 0;
+                    rentotal += residentes[index].renda;
+                    index += 1;
+                }
+                var renmedia = (rentotal / qtdresi);
+                console.log('Renda média dos residentes = ' + renmedia)
+            }
+            else if (opc == 3) {
+                var qtdresi = parseInt(residentes.length);
+                var pesototal = 0;
+                var alttotal = 0;
+                residentes.forEach(i => pesototal += i.peso)
+                residentes.forEach(i => alttotal += i.altura)
+                var imc = pesototal / (alttotal ** 2)
+                var imctotal = imc / qtdresi
+                console.log('Imc médio dos residentes = ' + imctotal)
+
+            }
+            else if (opc == 4) {
+                var idatotal = 0
+                var qtdresi = parseInt(residentes.length);
+                for (i = 0; i < qtdresi; i++) {
+                    var index = 0;
+                    idatotal += residentes[index].idade;
+                    index += 1;
+                }
+                var idamedia = (idatotal / qtdresi)
+                console.log('Idade média dos residentes = ' + idamedia)
+            }
+            else if (opc == 5) {
+                ctr += 1
+            }
+        } while (ctr == 0)
+
+
+    </script>
+</body>
+
+</html>
