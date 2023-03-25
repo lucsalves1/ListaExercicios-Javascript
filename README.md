@@ -1,4 +1,4 @@
-# ListaExercocios-Javascript
+# ListaExercicios-Javascript
 Lista de Exercícios com desafios básicos de código para treinamento em JavaScript.
 
 Questão 1
